@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback</title>
+</head>
+<body>
+
+    <!-- Callback functions - "I will callback later!" (https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+     - A callback is a function passed as an argument to another function
+     - This technique allows a function to call another function
+     - A callback function can run after another function has finished
+    -->
+     <div class="container">
+      <h1>Greeting and Farewell message</h1>
+
+      <button id="greetBtn" class="btn">Greet Alice</button>
+      <br>
+      <div id="greetingMessage"></div>
+      <div id="farewellMessage"></div>
+     </div>
+
+    
+    <!-- Callback function -->
+    <script>
+
+      // Basic example 
+      function myFirst(callback){
+        console.log("First function"); 
+        // Call the callback function 
+        callback(); 
+      } 
+      function mySecond(){
+        console.log("Second function"); 
+      }
+      // Call the first function 
+      myFirst(mySecond);
+
+
+      // Greet Alice functions 
+      function greet(name, callback){
+        // Greet alice 
+          // Grab the element that we want to add the message to
+          const greetingMessage = document.getElementById("greetingMessage"); 
+          // define the message content 
+          greetingMessage.textContent = "Hello, " + name + "!"; 
+
+        // Call the callback function 
+        callback(); 
+
+      }
+
+      function farewell(){
+        // Grab the farewell element
+        const farewellMessage = document.getElementById("farewellMessage");  
+
+        // Add the message content 
+        farewellMessage.textContent = "Goodbye!"; 
+      }
+
+      // Get the greeting button elmnt and add event listener ("click", function) to call greet function with farewell callback 
+      document.getElementById("greetBtn").addEventListener("click", function(){
+        greet("Alice", farewell); 
+      }); 
+
+    </script> 
+  
+</body>
+</html>

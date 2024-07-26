@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeout</title>
+</head>
+<body>
+
+  <!-- Timeouts (https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) -->
+   <div class="container">
+    <h1>Timeout Example</h1>
+    <p>Check the page and console for output</p>
+    <div class="message" id="waitMessage">
+      Wait for it...
+    </div>
+   </div>
+  
+  <script>
+
+    // Timeout example 
+    // setTimeout(() => {
+    //   console.log("this is the first message");
+    // }, 5000); // Delay by 5 seconds
+    // setTimeout(() => {
+    //   console.log("this is the second message");
+    // }, 3000); // Delay by 3 seconds 
+    // setTimeout(() => {
+    //   console.log("this is the third message");
+    // }, 1000); // Delay by 1 second 
+
+
+    // Timeout Message example 
+
+    // "Timer" starts 
+    console.log("Start");
+
+    // Timeout Function
+    setTimeout(() => {
+        document.getElementById("waitMessage").textContent = "Wait for it... Done!"; 
+        console.log("Wait for it... completed"); 
+    }, 5000); // Wait 5 seconds for the code to execute 
+
+    // Another way of writing the timeout function 
+    // setTimeout(function(){
+    //  ... code to execute 
+    // })
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch User Data</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #userData {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Goal: Fetch (GET) user data and display data on the page
+  -->
+
+  <!-- Creating the div to place the data in -->
+   <div id="userData">
+    <h2>User Data</h2>
+    <p id="userInfo">Loading...</p>
+   </div>
+
+  <script>
+    // Async keyworld: indicates that we are performing an asynchronous operation 
+    // Await: waits for the promise to resolve  
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+    // Write an async function called fetchUserData() to get the user data 
+    // Create a new promise that resolves itself in 3 seconds 
+    // return the user data 
+
+    async function fetchUserData(){
+        // Create a promise to fetch the user data and resolve the promise by delivering the user data 
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          }, 3000);
+        });
+        return {name: "John Doe", age: 30, email: "john@example.com"}; 
+      }    
+
+    // Write a function to display the user data called displayUserData() 
+    // try calling the fetch user data function and updating the div to include the updated information 
+    // catch an errors and update the div to say that we failed fetching the user data 
+    async function displayUserData(){
+      try {
+        const userData = await fetchUserData();
+        const userInfoElement = document.getElementById("userInfo");
+
+        userInfoElement.textContent = `Name: ${userData.name}, Age: ${userData.age}, Email: ${userData.email}`;
+
+      } catch(error) {
+        console.log("Error fetching user data", error);
+        const userInfoElement = document.getElementById('userInfo');
+
+        userInfoElement.textContent = "Failed to fetch user data";
+      }
+    }
+
+    // Call the function to display user data when the DOM content is loaded 
+    // ie. Load the user data when we load the page 
+    document.addEventListener("DOMContentLoaded", displayUserData); 
+
+  </script>
+</body>
+</html>
+
+<!-- 
+
+  async function fetchUserData(){
+    // Create a promise to fetch the user data and resolve the promise by delivering the user data 
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 3000);
+    });
+    return {name: "John Doe", age: 30, email: "john@example.com"}; 
+  }
+
+  // Example from presentation 
+    async function postData(url = '', data = {}) {
+      const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+      });
+      return await response.json();
+  }
+
+  // Example: Sending user data to a server
+  const userData = { username: 'john_doe', email: 'john@example.com' };
+  const serverResponse = await postData('<https://api.example.com/users>', userData);
+  console.log(serverResponse);
+
+
+  // Another way we have seen this data 
+  const options = {
+    method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data), 
+  };
+
+  fetch("exampleurl.com", options)
+    .then(response => response.json())
+    .catch(error => console.log(error));
+
+
+-->

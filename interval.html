@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interval Example</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Interval Example</h1>
+    <p>Check the console for output</p>
+
+    <div class="message" id="tickMessage">Tick...</div>
+  </div>
+
+  <script>
+
+    // setInterval Example (https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
+    // The setInterval() method, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
+
+    setInterval(() => {
+        // Grab the tick message element
+        const tickMessage = document.getElementById("tickMessage")
+
+        // Set the currentTime = new Date(); 
+        const currentTime = new Date(); 
+
+        // timeString = currentTime formatted 
+        const timeString = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds(); 
+
+        // Update the tick message content 
+        tickMessage.textContent = "Tick... Current Time: " + timeString; 
+
+        // Log in the console 
+        console.log("Tick... Current Time: " + timeString)
+    }, 1000);
+
+    
+    // setInterval(codeToRun, 1000)
+
+    function codeToRun(){
+      // Grab the tick message element
+      const tickMessage = document.getElementById("tickMessage")
+
+      // Set the currentTime = new Date(); 
+      const currentTime = new Date(); 
+
+      // timeString = currentTime formatted 
+      const timeString = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds(); 
+
+      // Update the tick message content 
+      tickMessage.textContent = "Tick... Current Time: " + timeString; 
+
+      // Log in the console 
+      console.log("Tick... Current Time: " + timeString)
+    }
+
+  </script>
+  
+</body>
+</html>

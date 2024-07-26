@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Delivery</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #deliveryStatus {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>  
+</head>
+<body>
+
+  <div id="deliveryStatus">Delivery Status: </div>
+
+<script>
+  // I promise to deliver you pizza
+  // If successful, delivery status = Pizza delivered 
+  // If not sucessful, delivery status = Delivery failed 
+
+  // Promise creation(new Promise): we create a new promise object pizzaPromise using the Promise constructor
+  // It takes a function with two parameters, resolve and reject 
+   
+
+  let pizzaPromise = new Promise((resolve, reject) => {
+
+    // Wait 3 seconds, and then successfully resolve the promise by delivery the pizza 
+    setTimeout(function(){
+      resolve("Pizza delivered!");
+    }, 3000); // Delivery in 3 seconds 
+    
+  });
+
+  // The THEN method is chained to the PizzaPromise which will be invoked when the promise is resolved successfully
+  // Inside the THEN method, it retrieves the element with the id deliveryStatus aand sets the content to "Pizza Delivered!"
+  // The CATCH method is used to catch any errors that may occur during the promise execution 
+
+  // Error handling for after the promise is fullfilled or not fullfilled 
+  pizzaPromise.then(function(message){
+    document.getElementById("deliveryStatus").textContent = message; 
+  }).catch(function(error){
+    console.log("Delivery failed: ", error);
+  }); 
+
+</script>
+
+<!-- BASIC PROMISE EXAMPLE -->
+<script>
+
+  function myStringChecker(my_str) {
+
+    return new Promise((resolve, reject) => {
+      
+      // If the string length is greater than 6, resolve - the string is greater than 6
+      if (my_str.length > 6) {
+        resolve("This is greater than 6")
+      }
+
+      // Else: reject - the string is less than or equal to 6 
+      else {
+        reject("This is less than or equal to 6")
+      }
+
+    });
+
+  }
+
+  myStringChecker("hello")
+  .then(result => {
+    console.log(result)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
+
+</script>
+
+
+</body>
+</html>
+
+<!--  https://frontend.turing.edu/lessons/module-3/promises.html?ads_cmpid=6451354298&ads_adid=76255849919&ads_matchtype=&ads_network=g&ads_creative=582477081488&utm_term=&ads_targetid=dsa-19959388920&utm_campaign=&utm_source=adwords&utm_medium=ppc&ttv=2&gad_source=1&gclid=CjwKCAjwko21BhAPEiwAwfaQCFvQUHoDixw1I-o-hYPdYiLrvy3qJZHtH4fBWPu4PBYPV7BFoe3nQxoCD1oQAvD_BwE
+
+PROMISE: An object representing the eventual completion or error of an operation, along with a value
+CALLBACK: A function given to another function to be called at a later time
+
+PROMISE DEFINITION
+let foo = new Promise((resolve, reject) => {});
+
+- similar to try and except 
+- resolve => sucess 
+- reject => failure 
+
+BASIC PROMISE FULLFILLMENT (USING TRUE OR FALSE )
+
+let foo = new Promise((resolve, reject) => {
+  if (true) {
+    resolve('Here is the data you retrieved!');
+  } else {
+    reject('There was an error retrieving your data');
+  }
+});
+
+
+-->
